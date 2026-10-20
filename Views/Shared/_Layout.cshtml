@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Quản lý tài sản</title>
+    <link rel="stylesheet" href="~/css/employee-portal.css" asp-append-version="true" />
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <a class="brand" asp-controller="Home" asp-action="Index">
+            <span class="brand-icon">⌂</span><span>Quản lý tài sản</span>
+        </a>
+        <nav>
+            <a class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")" asp-controller="Home" asp-action="Index"><span>⌂</span>Trang chủ</a>
+            <a class="nav-item" asp-controller="TaiSan" asp-action="CuaToi"><span>▤</span>Tài sản của tôi</a>
+            <a class="nav-item" asp-controller="YeuCau" asp-action="Index"><span>♧</span>Báo hỏng / Yêu cầu</a>
+            <a class="nav-item" asp-controller="YeuCau" asp-action="LichSu"><span>◷</span>Lịch sử yêu cầu</a>
+            <a class="nav-item" asp-controller="ThongBao" asp-action="Index"><span>♧</span>Thông báo</a>
+            <a class="nav-item" asp-controller="TaiKhoan" asp-action="HoSo"><span>♙</span>Hồ sơ cá nhân</a>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <header class="topbar">
+            <button class="menu-toggle" type="button" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+            <label class="search"><span>⌕</span><input type="search" placeholder="Tìm kiếm tài sản, mã tài sản, yêu cầu..." /></label>
+            <div class="top-right">
+                <button class="notification" type="button" aria-label="Thông báo">♧<i></i></button>
+                <div class="user">
+                    <div class="avatar">TA</div>
+                    <div class="user-text"><strong>Đinh Tuấn Anh</strong><small>Nhân viên</small></div>
+                    <span class="chevron">⌄</span>
+                </div>
+            </div>
+        </header>
+        <main class="content">
+            @RenderBody()
+        </main>
+    </div>
+</div>
+</body>
+</html>
