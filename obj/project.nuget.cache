@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6XCiBKSpoqQ=",
+  "dgSpecHash": "lXeVRcGpoB4=",
   "success": true,
   "projectFilePath": "D:\\Bài tập\\Công nghệ phần mềm\\QuanLyTaiSan\\DoAn\\DoAn.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tuananhdz\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\Tuananhdz\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Tuananhdz\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Tuananhdz\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

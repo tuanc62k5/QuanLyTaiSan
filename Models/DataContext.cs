@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using QuanLyTaiSan.Models;
 
 namespace DoAn.Models
 {
@@ -8,6 +9,7 @@ namespace DoAn.Models
         {
         }
         public DbSet<tblMenu> Menus {get; set;}
+        public DbSet<tblTaiKhoan> TaiKhoans {get; set;}
         
     }
 }

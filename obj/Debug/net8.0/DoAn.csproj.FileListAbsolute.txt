@@ -225,3 +225,5 @@ D:\Bài tập\Công nghệ phần mềm\QuanLyTaiSan\DoAn\bin\Debug\net8.0\ru\Mi
 D:\Bài tập\Công nghệ phần mềm\QuanLyTaiSan\DoAn\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\Bài tập\Công nghệ phần mềm\QuanLyTaiSan\DoAn\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\Bài tập\Công nghệ phần mềm\QuanLyTaiSan\DoAn\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\Bài tập\Công nghệ phần mềm\QuanLyTaiSan\DoAn\obj\Debug\net8.0\DoAn.sourcelink.json
+D:\Bài tập\Công nghệ phần mềm\QuanLyTaiSan\DoAn\bin\Debug\net8.0\BCrypt-Net-Next.dll

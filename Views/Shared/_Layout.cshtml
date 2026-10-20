@@ -1,44 +1,94 @@
+@using Microsoft.AspNetCore.Http
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ViewData["Title"] - Quản lý tài sản</title>
-    <link rel="stylesheet" href="~/css/employee-portal.css" asp-append-version="true" />
-</head>
-<body>
-<div class="layout">
-    <aside class="sidebar">
-        <a class="brand" asp-controller="Home" asp-action="Index">
-            <span class="brand-icon">⌂</span><span>Quản lý tài sản</span>
-        </a>
-        <nav>
-            <a class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")" asp-controller="Home" asp-action="Index"><span>⌂</span>Trang chủ</a>
-            <a class="nav-item" asp-controller="TaiSan" asp-action="CuaToi"><span>▤</span>Tài sản của tôi</a>
-            <a class="nav-item" asp-controller="YeuCau" asp-action="Index"><span>♧</span>Báo hỏng / Yêu cầu</a>
-            <a class="nav-item" asp-controller="YeuCau" asp-action="LichSu"><span>◷</span>Lịch sử yêu cầu</a>
-            <a class="nav-item" asp-controller="ThongBao" asp-action="Index"><span>♧</span>Thông báo</a>
-            <a class="nav-item" asp-controller="TaiKhoan" asp-action="HoSo"><span>♙</span>Hồ sơ cá nhân</a>
-        </nav>
-    </aside>
 
-    <div class="main">
-        <header class="topbar">
-            <button class="menu-toggle" type="button" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
-            <label class="search"><span>⌕</span><input type="search" placeholder="Tìm kiếm tài sản, mã tài sản, yêu cầu..." /></label>
-            <div class="top-right">
-                <button class="notification" type="button" aria-label="Thông báo">♧<i></i></button>
-                <div class="user">
-                    <div class="avatar">TA</div>
-                    <div class="user-text"><strong>Đinh Tuấn Anh</strong><small>Nhân viên</small></div>
-                    <span class="chevron">⌄</span>
+    <title>@ViewData["Title"] - Quản lý tài sản</title>
+
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet"href="~/css/employee-portal.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="layout">
+
+        <aside class="sidebar">
+            <a class="brand"
+               asp-controller="Home"
+               asp-action="Index">
+                <span>Quản lý tài sản</span>
+            </a>
+            @await Component.InvokeAsync("MenuView")
+        </aside>
+
+        <div class="main">
+            <header class="topbar">
+
+            <label class="search">
+                <i class="bi bi-search"></i>
+                <input type="search" placeholder="Tìm kiếm tài sản, mã tài sản, yêu cầu..." />
+            </label>
+
+
+                <div class="top-right">
+
+                    @{
+                        var hoTen = Context.Session.GetString("HoTen") ?? "Tài khoản";
+
+                        var tenDangNhap = Context.Session.GetString("TenDangNhap") ?? "";
+
+                        var vaiTro = Context.Session.GetString("VaiTro") ?? "NhanVien";
+
+                        var chuCai = !string.IsNullOrWhiteSpace(hoTen)
+                            ? hoTen.Trim().Substring(0, 1).ToUpper() : "T";
+                    }
+
+                    <div class="user">
+                        <div class="avatar">@chuCai</div>
+
+                        <div class="user-text"><strong>@hoTen</strong>
+                            <small>
+                                @(vaiTro == "Admin" ? "Quản trị viên" : "Nhân viên")
+                            </small>
+                        </div>
+
+                        <details class="user-menu">
+                            <summary class="chevron"
+                                     aria-label="Tài khoản">
+                            </summary>
+
+                            <div class="user-dropdown">
+                                <div class="user-info">
+                                    <strong>@hoTen</strong>
+                                    <small>@tenDangNhap</small>
+                                </div>
+
+                                <a asp-controller="TaiKhoan"
+                                   asp-action="HoSo">Hồ sơ cá nhân
+                                </a>
+
+                                <form asp-controller="DangNhap"
+                                    asp-action="DangXuat"
+                                    method="post">@Html.AntiForgeryToken()
+
+                                    <button type="submit">
+                                        Đăng xuất
+                                    </button>
+                                </form>
+                            </div>
+                        </details>
+                    </div>
                 </div>
-            </div>
-        </header>
-        <main class="content">
-            @RenderBody()
-        </main>
+            </header>
+
+            <main class="content">@RenderBody()</main>
+
+        </div>
     </div>
-</div>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
